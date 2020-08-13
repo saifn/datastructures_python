@@ -81,6 +81,28 @@ class SinglyLinkedList:
             data = int(input("Enter the element to be inserted: "))
             self.insert_at_end(data)
 
+    # Important Method: Reversing a Singly Linked List.
+    # you need three pointers - prev, p (current) and next
+
+    def reverse_linked_list(self):
+        #initialize prev to None and p to the start Node.
+        prev = None
+        p = self.start
+        #Loop through as long as you do not reach the last Node.
+        while p is not None:
+            #next pointer will point the next node of P. This is only to keep a reference
+            #for later because the link is broken in the next statement.
+            next = p.next
+            #break the next pointer link and point to previous. Here the link is broken to next.
+            p.next = prev
+            #previous now moves to p's location.
+            prev = p
+            #Keeping a reference to next helps move p to the next node and the loop continues
+            p = next
+
+        #once the list has been reversed you change the reference pointer
+        self.start = prev
+
 
 list = SinglyLinkedList()
 
