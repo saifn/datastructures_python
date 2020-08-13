@@ -55,6 +55,33 @@ class SinglyLinkedList:
                 print("The number is not found in the list")
                 return False
 
+    def insert_at_end(self, data):
+        temp = Node(data)
+        if self.start is None:
+            self.start = temp
+            return
+
+        p = self.start
+
+        #Careful here if you do p is not None: Then you will have no p.next to insert temp into
+        #p.next is None means you can assign temp to p.next since it is none.
+        #Error you would get: AttributeError: 'NoneType' object has no attribute 'next'
+
+        while p.next is not None:
+            p = p.next
+
+        p.next = temp
+
+    def create_list(self):
+        n = int(input("Enter the number of nodes in the list: "))
+
+        if n == 0:
+            return
+        for i in range(n):
+            data = int(input("Enter the element to be inserted: "))
+            self.insert_at_end(data)
+
+
 list = SinglyLinkedList()
 
 list.create_list()
